@@ -29,15 +29,19 @@ export function Header() {
       )}
     >
       <div className="container-wide flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="Anasayfa">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-deep-blue text-white">
+        <Link href="/" className="group flex items-center gap-2.5" aria-label="Anasayfa">
+          <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-deep-blue via-ocean to-mediterranean text-white shadow-soft">
             <Droplets className="h-5 w-5" aria-hidden />
+            <span
+              className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-coral"
+              aria-hidden
+            />
           </span>
           <span className="flex flex-col leading-tight">
             <span className="font-display text-base font-bold text-deep-blue">
               {siteConfig.shortName}
             </span>
-            <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-ocean">
               Bodrum · Milas · 7/24
             </span>
           </span>
@@ -75,7 +79,7 @@ export function Header() {
                   className="flex items-center gap-2.5"
                   onClick={() => setOpen(false)}
                 >
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-deep-blue text-white">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-deep-blue via-ocean to-mediterranean text-white">
                     <Droplets className="h-5 w-5" />
                   </span>
                   <span className="font-display font-bold text-deep-blue">

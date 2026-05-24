@@ -2,9 +2,36 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/services";
 
+const tints = [
+  {
+    icon: "bg-gradient-to-br from-sky-400 to-ocean text-white",
+    glow: "from-ocean/15 to-mediterranean/5",
+    border: "hover:border-ocean/40",
+    link: "text-ocean",
+  },
+  {
+    icon: "bg-gradient-to-br from-mediterranean to-cyan-400 text-white",
+    glow: "from-mediterranean/15 to-cyan-300/5",
+    border: "hover:border-mediterranean/50",
+    link: "text-mediterranean",
+  },
+  {
+    icon: "bg-gradient-to-br from-amber-400 to-coral text-white",
+    glow: "from-coral/15 to-amber-300/5",
+    border: "hover:border-coral/50",
+    link: "text-coral",
+  },
+  {
+    icon: "bg-gradient-to-br from-deep-blue to-indigo-700 text-white",
+    glow: "from-deep-blue/15 to-indigo-400/5",
+    border: "hover:border-deep-blue/40",
+    link: "text-deep-blue",
+  },
+];
+
 export function ServicesGrid() {
   return (
-    <section className="section bg-sand/30">
+    <section className="relative section bg-gradient-to-b from-sand/40 to-white">
       <div className="container-wide">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
@@ -25,26 +52,37 @@ export function ServicesGrid() {
         </div>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <Link
-              key={service.slug}
-              href={`/hizmetler/${service.slug}`}
-              className="group flex flex-col rounded-2xl border border-deep-blue/10 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-ocean/40 hover:shadow-elevated"
-            >
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ocean/10 text-ocean">
-                <service.icon className="h-6 w-6" />
-              </span>
-              <h3 className="mt-5 font-display text-xl font-bold text-deep-blue">
-                {service.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-deep-blue/70">
-                {service.short}
-              </p>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-ocean">
-                Detay <ArrowRight className="h-3.5 w-3.5" />
-              </span>
-            </Link>
-          ))}
+          {services.map((service, idx) => {
+            const t = tints[idx % tints.length];
+            return (
+              <Link
+                key={service.slug}
+                href={`/hizmetler/${service.slug}`}
+                className={`group relative flex flex-col overflow-hidden rounded-2xl border border-deep-blue/10 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-elevated ${t.border}`}
+              >
+                <span
+                  className={`absolute -top-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br ${t.glow} blur-2xl transition group-hover:scale-150`}
+                  aria-hidden
+                />
+                <span
+                  className={`relative inline-flex h-12 w-12 items-center justify-center rounded-xl shadow-soft ${t.icon}`}
+                >
+                  <service.icon className="h-6 w-6" />
+                </span>
+                <h3 className="relative mt-5 font-display text-xl font-bold text-deep-blue">
+                  {service.title}
+                </h3>
+                <p className="relative mt-2 text-sm leading-relaxed text-deep-blue/70">
+                  {service.short}
+                </p>
+                <span
+                  className={`relative mt-6 inline-flex items-center gap-1.5 text-sm font-semibold ${t.link}`}
+                >
+                  Detay <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
+                </span>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

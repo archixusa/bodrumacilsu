@@ -5,12 +5,20 @@ import { regions } from "@/lib/regions";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-deep-blue/10 bg-deep-blue text-white">
-      <div className="container-wide py-16">
+    <footer className="relative mt-24 overflow-hidden border-t border-deep-blue/10 bg-gradient-to-br from-deep-blue via-deep-blue to-ocean/80 text-white">
+      <div
+        className="pointer-events-none absolute -top-32 right-1/4 h-72 w-72 rounded-full bg-mediterranean/20 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -bottom-32 left-1/4 h-72 w-72 rounded-full bg-coral/10 blur-3xl"
+        aria-hidden
+      />
+      <div className="container-wide relative py-16">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div className="space-y-5">
             <Link href="/" className="flex items-center gap-2.5">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-mediterranean to-coral text-white shadow-soft">
                 <Droplets className="h-5 w-5" />
               </span>
               <span className="flex flex-col leading-tight">
@@ -47,7 +55,7 @@ export function Footer() {
                 target="_blank"
                 aria-label="Instagram"
                 rel="noopener noreferrer"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 hover:border-white/30"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-white/5 transition hover:border-coral/40 hover:bg-coral/10 hover:text-coral"
               >
                 <Instagram className="h-4 w-4" />
               </Link>
@@ -56,7 +64,7 @@ export function Footer() {
                 target="_blank"
                 aria-label="Facebook"
                 rel="noopener noreferrer"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 hover:border-white/30"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-white/5 transition hover:border-coral/40 hover:bg-coral/10 hover:text-coral"
               >
                 <Facebook className="h-4 w-4" />
               </Link>
