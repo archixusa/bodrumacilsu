@@ -2,26 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 215 60% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 60% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 60% 14%;
+
+    --primary: 211 64% 33%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 60% 14%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 215 60% 14%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 211 64% 33%;
+
+    --radius: 0.625rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-deep-blue;
+  }
+
+  ::selection {
+    background: rgba(74, 159, 212, 0.25);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-tight {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ocean;
+  }
+
+  .form-input {
+    @apply h-12 w-full rounded-xl border border-deep-blue/15 bg-white px-4 text-sm text-deep-blue placeholder:text-deep-blue/40 transition focus:border-ocean focus:outline-none focus:ring-2 focus:ring-ocean/20;
+  }
+
+  textarea.form-input {
+    @apply h-auto py-3;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
   }
 }
