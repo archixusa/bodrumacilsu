@@ -33,7 +33,11 @@ jobs:
       - name: Build static export
         run: npm run build
         env:
-          NEXT_PUBLIC_SITE_URL: https://bodrumacilsu.com
+          # Default URL: https://<user>.github.io/bodrumacilsu — needs basePath.
+          # When custom domain (bodrumacilsu.com) is wired, remove this env
+          # AND restore public/CNAME so apex deploy works.
+          NEXT_PUBLIC_BASE_PATH: /bodrumacilsu
+          NEXT_PUBLIC_SITE_URL: https://archixusa.github.io/bodrumacilsu
 
       - name: Add .nojekyll
         run: touch ./out/.nojekyll

@@ -82,8 +82,9 @@ src/
 
 ## Custom domain (bodrumacilsu.com)
 
-1. Domain'i satın al (örn. GoDaddy, Natro, Namecheap).
-2. DNS panelinden GitHub Pages için kayıtları gir:
+> Domain alınıp DNS hazır olduğunda 4 adımlık değişiklik:
+
+1. **DNS panelinden** GitHub Pages kayıtlarını gir:
    - **A** kayıtları (apex `bodrumacilsu.com`):
      ```
      185.199.108.153
@@ -91,10 +92,12 @@ src/
      185.199.110.153
      185.199.111.153
      ```
-   - **CNAME** (`www.bodrumacilsu.com` → `<kullaniciadi>.github.io.`)
-3. Repo'da `public/CNAME` zaten var (`bodrumacilsu.com`).
-4. **Settings → Pages → Custom domain**: `bodrumacilsu.com` gir.
-5. DNS yayılınca **Enforce HTTPS** seçeneğini açın.
+   - **CNAME** (`www.bodrumacilsu.com` → `archixusa.github.io.`)
+2. `public/CNAME` dosyası ekle, içeriği: `bodrumacilsu.com`
+3. `.github/workflows/deploy.yml` içindeki **NEXT_PUBLIC_BASE_PATH** env satırını sil, `NEXT_PUBLIC_SITE_URL`'i `https://bodrumacilsu.com` yap.
+4. **Settings → Pages → Custom domain**: `bodrumacilsu.com` gir, kaydet. DNS yayılınca **Enforce HTTPS** açılır.
+
+> Şu an default URL ile çalıştığı için `basePath = /bodrumacilsu`; bu yüzden tüm asset yolları `/bodrumacilsu/_next/...` üzerinden çağrılıyor.
 
 ## Vercel'e geçiş (gelecekte)
 
