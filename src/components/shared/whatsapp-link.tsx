@@ -12,9 +12,9 @@ interface WhatsAppLinkProps {
 }
 
 const sizes = {
-  sm: "h-10 px-4 text-sm",
-  md: "h-12 px-5 text-base",
-  lg: "h-14 px-6 text-base",
+  sm: "h-11 px-4 text-sm gap-1.5",
+  md: "h-12 px-5 text-base gap-2",
+  lg: "h-14 px-6 text-base gap-2.5",
 };
 
 export function WhatsAppLink({
@@ -26,9 +26,9 @@ export function WhatsAppLink({
 }: WhatsAppLinkProps) {
   const variants = {
     filled:
-      "bg-whatsapp text-white hover:bg-whatsapp/90 shadow-soft",
+      "bg-whatsapp text-white hover:bg-[#1FB955] shadow-card focus-visible:ring-whatsapp/40",
     outline:
-      "border border-whatsapp/40 text-whatsapp hover:bg-whatsapp/10",
+      "border border-whatsapp/30 bg-white text-whatsapp hover:bg-whatsapp/10 focus-visible:ring-whatsapp/30",
   } as const;
 
   return (
@@ -37,15 +37,15 @@ export function WhatsAppLink({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all",
+        "inline-flex items-center justify-center rounded-xl font-semibold transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-4",
         variants[variant],
         sizes[size],
         className,
       )}
       aria-label="WhatsApp'tan yaz"
     >
-      <MessageCircle className="h-4 w-4" aria-hidden />
-      {label}
+      <MessageCircle className="h-4 w-4 flex-shrink-0" aria-hidden />
+      <span>{label}</span>
     </Link>
   );
 }

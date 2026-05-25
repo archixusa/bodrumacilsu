@@ -13,9 +13,13 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp'tan yaz"
-      className="fixed bottom-24 right-4 z-30 hidden h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-elevated transition hover:scale-105 lg:bottom-6 lg:flex"
+      className="group fixed bottom-6 right-4 z-30 hidden h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-elevated transition-colors duration-200 hover:bg-[#1FB955] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-whatsapp/40 lg:flex"
     >
-      <MessageCircle className="h-6 w-6" aria-hidden />
+      <span
+        className="absolute inset-0 rounded-full bg-whatsapp/40 animate-pulse-ring"
+        aria-hidden
+      />
+      <MessageCircle className="relative h-6 w-6" aria-hidden />
       <span className="sr-only">WhatsApp</span>
     </Link>
   );

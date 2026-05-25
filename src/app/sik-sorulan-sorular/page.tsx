@@ -27,7 +27,9 @@ export default function FAQPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLdScript(faqSchema)}
       />
-      <FAQ title="Sıkça Sorulan Sorular" eyebrow="Tüm cevaplar" />
+      <div className="pt-20">
+        <FAQ title="Sıkça sorulan sorular" eyebrow="Tüm cevaplar" />
+      </div>
       <FinalCTA />
     </>
   );

@@ -1,6 +1,8 @@
+import { Quote, Target, Users, Award } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { TrustPoints } from "@/components/sections/trust-points";
+import { CertBadges } from "@/components/shared/cert-badges";
 
 export const metadata = buildMetadata({
   title: "Hakkımızda · Bodrum Acil Su",
@@ -9,48 +11,103 @@ export const metadata = buildMetadata({
   path: "/hakkimizda/",
 });
 
+const pillars = [
+  {
+    icon: Target,
+    title: "Tek odak",
+    text: "Sadece tanker su. Yan iş yok, hobi yok — Bodrum-Milas yarımadasında ne yapıyorsak bu işi yapıyoruz.",
+  },
+  {
+    icon: Users,
+    title: "Yerel ekip",
+    text: "Operatörlerimiz bölgenin dar yollarını, marina rotalarını, hangi sitenin ne saat müsait olduğunu bilen kişiler.",
+  },
+  {
+    icon: Award,
+    title: "Sertifikalı su",
+    text: "İçme suyu olarak teslim ettiğimiz her damla, Sağlık Bakanlığı onaylı kaynaktan ve sigortalı taşımayla geliyor.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-sand/30 py-16 sm:py-24">
-        <div className="container-tight">
+      <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/60 via-white to-white pt-24">
+        <div
+          className="pointer-events-none absolute -top-32 right-1/4 h-80 w-80 rounded-full bg-brand-200/30 blur-3xl"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-accent2-200/30 blur-3xl"
+          aria-hidden
+        />
+
+        <div className="container-tight relative py-16 sm:py-20">
           <p className="eyebrow">Hakkımızda</p>
-          <h1 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-deep-blue sm:text-4xl lg:text-5xl">
-            Bodrum&apos;un suyunu biz taşıyoruz.
+          <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+            Bodrum&apos;un suyunu{" "}
+            <span className="gradient-text">biz taşıyoruz.</span>
           </h1>
-          <div className="prose-bodrum mt-8 max-w-none space-y-5 text-base leading-relaxed text-deep-blue/80 sm:text-lg">
+
+          <div className="mt-8 max-w-none space-y-5 text-base leading-relaxed text-ink-muted sm:text-lg">
             <p>
               Bodrum Acil Su, Bodrum-Milas bölgesinin değişen su ihtiyacına çözüm üretmek için kuruldu. Bu yarımadada yaşayanlar bilir: yaz aylarında nüfus katlanır, su şebekesi yetişemez, depolar boşalır. Biz bu boşluğu doldurmak için varız.
             </p>
-            <p>
-              <strong>Yaklaşımımız basit:</strong> hızlı olun, dürüst olun, kaliteli su getirin.
+            <p className="rounded-2xl border-l-4 border-accent2-500 bg-accent2-50/40 py-4 pl-5 pr-4 text-base italic text-ink">
+              <Quote
+                className="mb-2 inline-block h-5 w-5 text-accent2-500"
+                aria-hidden
+              />
+              <br />
+              Yaklaşımımız basit: hızlı olun, dürüst olun, kaliteli su getirin.
             </p>
-            <p>
-              Filomuzdaki tankerler düzenli olarak hijyen kontrolünden geçer. İçme suyu olarak teslim ettiğimiz su Sağlık Bakanlığı onaylı kaynaklardan gelir ve istendiğinde analiz raporu paylaşılır. Operatörlerimiz bölgeyi bilen, deneyimli kişilerdir — dar siteler, ulaşılması zor villalar, marina rotaları onlar için sorun değil.
-            </p>
+          </div>
 
-            <div className="grid gap-6 rounded-2xl bg-white p-6 shadow-soft sm:grid-cols-2">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean">
-                  Müşterilerimiz
-                </p>
-                <p className="mt-3 text-base text-deep-blue/80">
-                  Yazlık ev sahipleri, site ve apartman yönetimleri, oteller, restoranlar, butik pansiyonlar, inşaat şantiyeleri, marina işletmeleri ve yat sahipleri.
+          <div className="mt-12 grid gap-5 sm:grid-cols-3">
+            {pillars.map((p) => (
+              <div
+                key={p.title}
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft"
+              >
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
+                  <p.icon className="h-5 w-5" aria-hidden />
+                </span>
+                <h3 className="mt-4 font-display text-lg font-semibold text-ink">
+                  {p.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  {p.text}
                 </p>
               </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean">
-                  Sözümüz
-                </p>
-                <p className="mt-3 text-base text-deep-blue/80">
-                  Telefonda söylediğimiz fiyat kapıda alınan fiyattır. Söylediğimiz saatte oradayız. Sorun çıkarsa çözeriz — kaçmayız.
-                </p>
-              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 grid gap-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-soft sm:grid-cols-2 sm:p-10">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">
+                Müşterilerimiz
+              </p>
+              <p className="mt-3 text-base leading-relaxed text-ink-muted">
+                Yazlık ev sahipleri, site ve apartman yönetimleri, oteller, restoranlar, butik pansiyonlar, inşaat şantiyeleri, marina işletmeleri ve yat sahipleri.
+              </p>
             </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent2-700">
+                Sözümüz
+              </p>
+              <p className="mt-3 text-base leading-relaxed text-ink-muted">
+                Telefonda söylediğimiz fiyat kapıda alınan fiyattır. Söylediğimiz saatte oradayız. Sorun çıkarsa çözeriz — kaçmayız.
+              </p>
+            </div>
+          </div>
 
-            <p>
-              Susuz kalmadan önce numaramızı kaydedin. Ne zaman ihtiyacınız olursa olsun, biz buradayız.
+          <div className="mt-12">
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.16em] text-ink-muted">
+              Belgelerimiz &amp; standartlarımız
             </p>
+            <div className="mt-4">
+              <CertBadges />
+            </div>
           </div>
         </div>
       </section>

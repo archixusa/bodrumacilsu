@@ -2,15 +2,9 @@ import { Star, Quote } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
 
 const avatars = [
-  "bg-gradient-to-br from-coral to-amber-400 text-white",
-  "bg-gradient-to-br from-mediterranean to-cyan-400 text-white",
-  "bg-gradient-to-br from-emerald-500 to-teal-400 text-white",
-];
-
-const ribbons = [
-  "from-coral/15 to-amber-200/20",
-  "from-mediterranean/15 to-cyan-200/20",
-  "from-emerald-400/15 to-teal-200/20",
+  "bg-gradient-to-br from-accent2-500 to-amber-400 text-white",
+  "bg-gradient-to-br from-brand-600 to-sky-400 text-white",
+  "bg-gradient-to-br from-emerald-600 to-teal-400 text-white",
 ];
 
 function initials(name: string) {
@@ -24,15 +18,13 @@ function initials(name: string) {
 
 export function Testimonials() {
   return (
-    <section className="relative section bg-gradient-to-b from-white to-sand/30">
+    <section className="relative section bg-surface-tint">
       <div className="container-wide">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow justify-center">Müşteri Yorumları</p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-deep-blue sm:text-4xl">
-            Bodrum&apos;un susayanı{" "}
-            <span className="bg-gradient-to-r from-coral to-orange-400 bg-clip-text text-transparent">
-              emanet ediyor.
-            </span>
+          <p className="eyebrow justify-center">Müşteri yorumları</p>
+          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            Bodrum&apos;un susayanı bize{" "}
+            <span className="gradient-text">emanet ediyor.</span>
           </h2>
         </div>
 
@@ -40,29 +32,25 @@ export function Testimonials() {
           {testimonials.map((t, idx) => (
             <figure
               key={t.author}
-              className="group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-deep-blue/10 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-elevated"
+              className="group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-card transition-shadow duration-200 hover:shadow-elevated"
             >
-              <span
-                className={`absolute -top-16 -right-10 h-40 w-40 rounded-full bg-gradient-to-br ${ribbons[idx % ribbons.length]} blur-2xl`}
-                aria-hidden
-              />
-              <Quote className="relative h-7 w-7 text-coral" />
-              <blockquote className="relative flex-1 text-base leading-relaxed text-deep-blue/90">
+              <Quote className="h-7 w-7 text-accent2-500" aria-hidden />
+              <blockquote className="relative flex-1 text-base leading-relaxed text-ink">
                 {t.text}
               </blockquote>
-              <div className="relative flex items-center justify-between border-t border-deep-blue/5 pt-4">
+              <div className="relative flex items-center justify-between border-t border-slate-100 pt-4">
                 <figcaption className="flex items-center gap-3">
                   <span
-                    className={`inline-flex h-10 w-10 items-center justify-center rounded-full font-display text-sm font-bold ${avatars[idx % avatars.length]}`}
+                    className={`inline-flex h-10 w-10 items-center justify-center rounded-full font-display text-sm font-semibold ${avatars[idx % avatars.length]}`}
                     aria-hidden
                   >
                     {initials(t.author)}
                   </span>
                   <span>
-                    <p className="font-display font-bold text-deep-blue">
+                    <p className="font-display font-semibold text-ink">
                       {t.author}
                     </p>
-                    <p className="text-xs text-deep-blue/60">{t.region}</p>
+                    <p className="text-xs text-ink-muted">{t.region}</p>
                   </span>
                 </figcaption>
                 <div

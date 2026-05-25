@@ -28,7 +28,7 @@ export const siteConfig = {
   },
 
   defaultOG: "/og-image.png",
-  themeColor: "#0A2540",
+  themeColor: "#2563EB",
 } as const;
 
 export const navigation = {

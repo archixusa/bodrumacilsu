@@ -34,9 +34,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="tr" className={`${display.variable} ${sans.variable}`}>
-      <body className="font-sans bg-background text-foreground">
+      <body className="font-sans bg-white text-ink">
+        <a href="#main" className="skip-link">
+          İçeriğe geç
+        </a>
         <Header />
-        <main className="pt-16">{children}</main>
+        <main id="main">{children}</main>
         <Footer />
         <MobileCTABar />
         <WhatsAppButton />

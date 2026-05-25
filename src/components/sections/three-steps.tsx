@@ -7,9 +7,8 @@ const steps = [
     time: "30 saniye",
     text: "Bizi arayın veya WhatsApp'tan yazın. Konumunuzu ve ihtiyacınızı söyleyin.",
     icon: Phone,
-    tint: "from-ocean to-mediterranean",
-    soft: "bg-ocean/10 text-ocean",
-    border: "hover:border-ocean/50",
+    bar: "from-brand-700 to-brand-500",
+    pill: "bg-brand-100 text-brand-700",
   },
   {
     n: "02",
@@ -17,66 +16,72 @@ const steps = [
     time: "5 dakika",
     text: "Size en yakın tankeri yönlendirelim, ulaşım süresini ve fiyatı netleştirelim.",
     icon: CheckCircle2,
-    tint: "from-mediterranean to-cyan-400",
-    soft: "bg-mediterranean/15 text-mediterranean",
-    border: "hover:border-mediterranean/60",
+    bar: "from-brand-500 to-brand-400",
+    pill: "bg-brand-50 text-brand-600",
   },
   {
     n: "03",
-    title: "Teslim Al",
+    title: "Teslim al",
     time: "60 dakika",
     text: "Tankerimiz kapınızda. Suyunuz depoya güvenle ve hijyenik şekilde aktarılır.",
     icon: Truck,
-    tint: "from-coral to-orange-400",
-    soft: "bg-coral/10 text-coral",
-    border: "hover:border-coral/50",
+    bar: "from-accent2-500 to-accent2-400",
+    pill: "bg-accent2-100 text-accent2-700",
   },
 ];
 
 export function ThreeSteps() {
   return (
-    <section className="section bg-white">
+    <section className="section bg-surface-tint">
       <div className="container-wide">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow justify-center">3 Adımda Su Kapınızda</p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-deep-blue sm:text-4xl">
-            Sipariş vermek <span className="text-ocean">30 saniye</span>, teslimat{" "}
-            <span className="text-coral">60 dakika</span>.
+          <p className="eyebrow justify-center">Çözüm</p>
+          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            Sipariş <span className="text-brand-700">30 saniye</span>, teslimat{" "}
+            <span className="text-accent2-600">60 dakika</span>.
           </h2>
+          <p className="mt-3 text-base text-ink-muted">
+            Form doldurmadan, sıraya girmeden, fiyat şişirmesine maruz kalmadan.
+          </p>
         </div>
+
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {steps.map((step) => (
+          {steps.map((step, idx) => (
             <li
               key={step.n}
-              className={`group relative overflow-hidden rounded-2xl border border-deep-blue/10 bg-white p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-elevated ${step.border}`}
+              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 shadow-card transition-shadow duration-200 hover:shadow-elevated"
             >
               <span
-                className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${step.tint}`}
+                className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${step.bar}`}
                 aria-hidden
               />
               <div className="flex items-start justify-between">
-                <span
-                  className={`font-display text-5xl font-bold bg-gradient-to-br ${step.tint} bg-clip-text text-transparent`}
-                >
+                <span className="font-display text-5xl font-bold text-slate-200">
                   {step.n}
                 </span>
                 <span
-                  className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${step.soft}`}
+                  className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${step.pill}`}
                 >
-                  <step.icon className="h-5 w-5" />
+                  <step.icon className="h-5 w-5" aria-hidden />
                 </span>
               </div>
-              <h3 className="mt-6 font-display text-2xl font-bold text-deep-blue">
+              <h3 className="mt-6 font-display text-2xl font-semibold text-ink">
                 {step.title}
               </h3>
               <p
-                className={`mt-1 text-sm font-semibold uppercase tracking-wider bg-gradient-to-r ${step.tint} bg-clip-text text-transparent`}
+                className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold ${step.pill}`}
               >
                 {step.time}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-deep-blue/70">
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
                 {step.text}
               </p>
+              {idx < steps.length - 1 && (
+                <span
+                  className="pointer-events-none absolute -right-3 top-1/2 hidden h-px w-6 -translate-y-1/2 bg-slate-200 lg:block"
+                  aria-hidden
+                />
+              )}
             </li>
           ))}
         </ol>
