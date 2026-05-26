@@ -18,6 +18,7 @@ import {
 } from "@/lib/order-schema";
 import { siteConfig, telLink, waLink } from "@/lib/config";
 import { cn } from "@/lib/utils";
+import { mirrorToReservationPanel } from "@/lib/reservation-mirror";
 
 type Step = 1 | 2 | 3;
 
@@ -84,6 +85,14 @@ export function OrderForm() {
 
   const onSubmit = (data: OrderFormValues) => {
     const message = formatOrderForWhatsApp(data as OrderFormData);
+    // Fire-and-forget mirror to central reservation panel (Supabase).
+    // Never blocks the WhatsApp redirect.
+    mirrorToReservationPanel({
+      guestName: data.name,
+      guestPhone: data.phone,
+      region: (data as OrderFormData & { district?: string }).district ?? null,
+      message,
+    });
     if (typeof window !== "undefined") {
       window.location.href = waLink(message);
       setTimeout(() => {
